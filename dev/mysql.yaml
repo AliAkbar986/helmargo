@@ -57,16 +57,16 @@ spec:
         #   persistentVolumeClaim:
         #     claimName: mydb-pv-claim
 
----
+# ---
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: mydb-service
-spec:
-  selector:
-    app: mydb
-  ports:
-    - protocol: TCP
-      port: 3306
-      targetPort: 3306
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: mydb-service
+# spec:
+#   selector:
+#     app: mydb
+#   ports:
+#     - protocol: TCP
+#       port: 3306
+#       targetPort: 3306
