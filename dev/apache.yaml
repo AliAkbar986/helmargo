@@ -47,7 +47,7 @@ metadata:
   name: myapp-service
 spec:
   selector:
-    app: apache-deployment
+    app: apache
   ports:
     - protocol: TCP
       port: 80
