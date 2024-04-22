@@ -5,7 +5,8 @@ metadata:
 spec:
   replicas: 1
   selector:
-      app: jenkins
+  matchLabels:
+    app: jenkins
   template:
     metadata:
       labels:
