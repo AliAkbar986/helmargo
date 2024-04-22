@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apache-deployment
+  name: jenkins
   labels:
-    app: apache
+    app: jenkins
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: apache
+      app: jenkins
   template:
     metadata:
       labels:
-        app: apache
+        app: jenkins
     spec:
       containers:
-      - name: apache
-        image: nanajanashia/argocd-app:1.2
+      - name: jenkins
+        image: bitnami/jenkins:latest
         # resources:
         #   requests:
         #     cpu: 100m
@@ -25,30 +25,24 @@ spec:
         #     cpu: 500m
         #     memory: 1Gi
         ports:
-        - containerPort: 80
+        - name: http
+          containerPort: 8080
         env:
-        - name: mydb_HOST
-          value: mydb-service
-        - name: mydb_PORT
-          value: "3306"
-        - name: MYSQL_ROOT_PASSWORD
-          value: "1234"
-        - name: mydb_DATABASE
-          value: mydb
-        - name: MYSQL_USER
-          value: user
-        - name: mydb_PASSWORD
-          value: "1234"
-# ---
+        - name: JENKINS_USERNAME
+          value: admin
 
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: myapp-service
-# spec:
-#   selector:
-#     app: apache
-#   ports:
-#     - protocol: TCP
-#       port: 80
-#       targetPort: 80
+---
+
+piVersion: v1
+kind: Service
+metadata:
+  name: JenkinsService
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: jenkins
+  ports:
+    - name: HTTP
+      port: 80
+      targetPort: http
+      nodePort: 30007
