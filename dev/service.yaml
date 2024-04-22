@@ -5,6 +5,7 @@ metadata:
 spec:
   type: NodePort
   selector:
+  matchLabels:
     app: jenkins
   ports:
     - name: HTTP
