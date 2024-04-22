@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jenkins
+  name: jenkinsdeploy
   labels:
     app: jenkins
 spec:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: jenkins
-        image: bitnami/jenkins:latest
+        image: "bitnami/jenkins:latest"
         # resources:
         #   requests:
         #     cpu: 100m
