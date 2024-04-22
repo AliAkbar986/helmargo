@@ -1,0 +1,9 @@
+appName: jenkins
+
+port: 8080
+
+namespace: myapp
+
+image: 
+  name: bitnami/jenkins
+  tag: latest
