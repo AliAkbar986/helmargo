@@ -7,9 +7,9 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/AliAkbar986/Kube.git
+    repoURL: https://github.com/AliAkbar986/helmargo.git
     targetRevision: HEAD
-    path: dev
+    path: templates
   destination: 
     server: https://kubernetes.default.svc
     namespace: myapp
